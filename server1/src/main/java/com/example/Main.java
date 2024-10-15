@@ -35,15 +35,52 @@ public class Main {
 
 
         String stringaRicevuta = new String();
+        String stringaOperazione = new String();
+        String stringOutout = new String();
+
         do {
+            stringaOperazione = in.readLine(); //operazione
+            System.out.println("l'operazione ricevuta: " + stringaOperazione);
 
-            stringaRicevuta = in.readLine(); //parola
-            System.out.println("La stringa ricevuta: " + stringaRicevuta);
+            if ( (!stringaOperazione.equals("!")) ) {
+                
+                stringaRicevuta = in.readLine(); //parola
+                System.out.println("La stringa ricevuta: " + stringaRicevuta);
+    
+                switch (stringaOperazione) {
+                    case "!":
+                        /*superflua*/
+                        break;
+    
+                    case "1":
+                        stringOutout = stringaRicevuta.toUpperCase();
+                        break;
+                    
+                    case "2":
+                        stringOutout = stringaRicevuta.toLowerCase();
+                        break;
 
-            String stringMaiuscola = stringaRicevuta.toUpperCase();
-            out.writeBytes(stringMaiuscola + '\n');
+                    case "3":
+                        stringOutout = new StringBuilder(stringaRicevuta).reverse().toString();
+                        break;
 
-        } while (!stringaRicevuta.equals("!"));
+                    case "4":
+                        int qtaC = stringaRicevuta.length(); //conta i caratteri
+                        stringOutout = Integer.toString(qtaC);
+                        break;
+
+                    default:
+                        stringOutout = "valore inserito non valido";
+                        break;
+                }
+    
+                out.writeBytes(stringOutout + '\n');
+    
+
+            }
+
+
+        } while (!stringaOperazione.equals("!"));
 
         
         s.close();
